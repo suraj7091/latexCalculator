@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=624">
+
+<link rel="stylesheet" type="text/css" href="mathquill/home.css">
+<link rel="stylesheet" type="text/css" href="mathquill/mathquill.css">
+
+<style type="text/css">
+code span {
+  font: 90% Verdana, sans-serif;
+}
+.mathquill-textbox {
+  width: 100%;
+}
+#html-source {
+  display: none;
+  font-size: 90%;
+  white-space: pre-wrap;
+}
+</style>
+
+</head>
+<body>
+<div id="body">
+
+<p>Math textbox with initial LaTeX: <span id="editable-math" class="mathquill-editable">\frac{d}{dx}\sqrt{x}=</span></p>
+
+<p><small>Try typing <code>1/2\sqrt x</code> and using the arrow keys to move around. Shortcut: use the tab key instead of arrow keys to get &quot;out&quot; of a command, like <code>a_n<span>[tab]</span>x^n</code>. Many LaTeX-style symbols and commands preceded by a backslash are supported, such as <code>\forall</code> or <code>n\choose k</code>.</small></p>
+
+<p>Latex source: <textarea id="latex-source" style="width:80%;vertical-align:top"></textarea></p>
+
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="mathquill/mathquill.js"></script>
+<script type="text/javascript">
+
+var latexMath = $('#editable-math'), latexSource = $('#latex-source');
+
+$(function() {
+  latexMath.bind('keydown keypress', function() {
+    setTimeout(function() {
+      var latex = latexMath.mathquill('latex');
+      latexSource.val(latex);
+//      location.hash = '#'+latex; //extremely performance-crippling in Chrome for some reason
+      htmlSource.text(printTree(latexMath.mathquill('html')));
+    });
+  }).keydown().focus();
+
+  latexSource.bind('keydown keypress', function() {
+    var oldtext = latexSource.val();
+    setTimeout(function() {
+      var newtext = latexSource.val();
+      if(newtext !== oldtext) {
+        latexMath.mathquill('latex', newtext);
+        htmlSource.text(printTree(latexMath.mathquill('html')));
+      }
+    });
+  });
+
+  if(location.hash && location.hash.length > 1)
+    latexMath.mathquill('latex', decodeURIComponent(location.hash.slice(1))).focus();
+});
+</script>
+</body>
+</html>
+
