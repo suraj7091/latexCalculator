@@ -11,4 +11,4 @@ This project is based on the beautiful [MathQuill](https://github.com/mathquill/
 ## TODO:
 * [ ] Create an engine that would parse the latex code and produce a result accordingly.
 * [ ] Create the UI, the buttons and all.
-* [ ] find a suitable framework to port it to desktop. ex: AppJS, electron... etc.
+* [ ] Find a suitable framework to port it to desktop. ex: AppJS, electron... etc.
