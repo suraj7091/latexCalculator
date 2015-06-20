@@ -26,9 +26,20 @@ code span {
 <body>
 <div id="body">
 
-<p>Math textbox with initial LaTeX: <span id="editable-math" class="mathquill-editable">2\cdot\frac{2}{3+2}</span></p>
+<p>Math textbox with initial LaTeX: <span id="editable-math" class="mathquill-editable">2\cdot\frac{2^3}{3+2}</span></p>
 
-<p><small>Try typing <code>1/2\sqrt x</code> and using the arrow keys to move around. Shortcut: use the tab key instead of arrow keys to get &quot;out&quot; of a command, like <code>a_n<span>[tab]</span>x^n</code>. Many LaTeX-style symbols and commands preceded by a backslash are supported, such as <code>n\choose k</code>.</small></p>
+<p>
+Try to type something above </br>
+Functions that are currently working:
+</p>
+<ul>
+	<li>Addition: 2+3</li>
+	<li>subtraction: 2-3</li>
+	<li>multiplication: 2*3</li>
+	<li>division: 2/3</li>
+	<li>power: 2^3</li>
+</ul>
+
 
 <p>Latex source: <br><textarea id="latex-source" style="width:80%;vertical-align:top"></textarea></p>
 
@@ -47,51 +58,7 @@ Don't try to select the result. Your browser will crash. This is a known bug and
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="mathquill/mathquill.js"></script>
 <script type="text/javascript" src="latexParser.js"></script>
-<script type="text/javascript">
-
-var latexMath = $('#editable-math'), latexSource = $('#latex-source'), result = $('#result'), parsedLatex;
-
-
-
-$(function() {
-	latexMath.bind('keydown keypress', function() {
-		setTimeout(function() {
-			var latex = latexMath.mathquill('latex');
-			latexSource.val(latex);
-			try { 
-				parsedLatex = latexParser.parse(latex).toString();
-				result.mathquill().mathquill('latex',parsedLatex);
-			}
-			catch(error) { 
-					console.log(error);
-					result.mathquill('latex', '');
-			}
-		});
-	}).keydown().focus();
-
-	latexSource.bind('keydown keypress', function() {
-		var oldtext = latexSource.val();
-		setTimeout(function() {
-			var newtext = latexSource.val();
-			if(newtext !== oldtext) {
-				latexMath.mathquill('latex', newtext);
-				
-				try {
-					parsedLatex = latexParser.parse(newtext).toString();
-					result.mathquill('latex',parsedLatex);
-				}
-				catch(error) { 
-						console.log(error);
-						result.mathquill().appendTo('body').mathquill('latex', '');
-				}
-			}
-		});
-	});
-
-	if(location.hash && location.hash.length > 1)
-		latexMath.mathquill('latex', decodeURIComponent(location.hash.slice(1))).focus();
-});
-</script>
+<script type="text/javascript" src="main.js"></script>
 
 </body>
 </html>

@@ -4,7 +4,7 @@ html {
 }
 body {
   min-height: 100%;
-  width: 100%;
+  max-width: 6.5in;
   margin: 0 auto;
   font-family: Georgia, serif;
   color: black;
