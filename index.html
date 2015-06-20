@@ -32,17 +32,20 @@ code span {
 
 <p>Latex source: <br><textarea id="latex-source" style="width:80%;vertical-align:top"></textarea></p>
 
-<p>Result: <br><textarea id="result" style="width:80%;vertical-align:top"></textarea></p>
+<p>
+<big><font color="red">Warning!</font></big>
+Don't try to select the result. Your browser will crash. This is a known bug and I'm working on a solution.
+</p>
+<p>Result: <span id="result" class="mathquill-embedded-latex"></span></p>
 
 </div>
-
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="mathquill/mathquill.js"></script>
 <script type="text/javascript" src="latexParser.js"></script>
 <script type="text/javascript">
 
-var latexMath = $('#editable-math'), latexSource = $('#latex-source'), result = $('#result');
+var latexMath = $('#editable-math'), latexSource = $('#latex-source'), result = $('#result'), parsedLatex;
 
 
 
@@ -51,8 +54,14 @@ $(function() {
 		setTimeout(function() {
 			var latex = latexMath.mathquill('latex');
 			latexSource.val(latex);
-			try { result.val(latexParser.parse(latex)); }
-			catch(error) { result.val(""); }
+			try { 
+				parsedLatex = latexParser.parse(latex).toString();
+				result.mathquill().mathquill('latex',parsedLatex);
+			}
+			catch(error) { 
+					console.log(error);
+					result.mathquill('latex', '');
+			}
 		});
 	}).keydown().focus();
 
@@ -62,8 +71,15 @@ $(function() {
 			var newtext = latexSource.val();
 			if(newtext !== oldtext) {
 				latexMath.mathquill('latex', newtext);
-			try { result.val(latexParser.parse(newtext)); }
-			catch(error) { result.val(""); }
+				
+				try {
+					parsedLatex = latexParser.parse(newtext).toString();
+					result.mathquill('latex',parsedLatex);
+				}
+				catch(error) { 
+						console.log(error);
+						result.mathquill().appendTo('body').mathquill('latex', '');
+				}
 			}
 		});
 	});
