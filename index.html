@@ -26,7 +26,8 @@ code span {
 <body>
 <div id="body">
 
-<p>Type in your math here: <span id="editable-math" class="mathquill-editable">2\cdot\frac{2^3}{3+2}</span>
+<p>
+Type in your math here: <span id="editable-math" class="mathquill-editable">2\cdot\frac{2^3}{3+2}</span>
  Result = <span id="result" class="mathquill-embedded-latex"></span>
 </p>
 
@@ -34,6 +35,8 @@ code span {
 Try to type something above </br>
 Functions that are currently working:
 </p>
+
+<p>
 <ul>
 	<li>Addition: 2+3</li>
 	<li>subtraction: 2-3</li>
@@ -41,6 +44,9 @@ Functions that are currently working:
 	<li>division: 2/3</li>
 	<li>power: 2^3</li>
 </ul>
+Note: This calculator in its current state doesn't know how to prioritize calculations (yet). </br>
+It might for example do an addition before a multiplication.
+</p>
 
 
 <p>Latex source: <br><textarea id="latex-source" style="width:80%;vertical-align:top"></textarea></p>
@@ -51,7 +57,8 @@ Don't try to select the result. Your browser will crash. This is a known bug and
 </p>
 
 <p>If you find this project interesting, fork me on 
-<big><a href="https://github.com/lordadamson/latexCalculator">github!</a></big>
+<big><a href="https://github.com/lordadamson/latexCalculator">github!</a></big></br>
+I could use a web designer because I suck at it (as you can obviously tell).
 </p>
 
 </div>
