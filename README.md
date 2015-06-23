@@ -6,6 +6,9 @@ You would **elegantly** type: </br>
 ![Alt text](/latexMath.png?raw=true "Latex Math")
 </br>
 
+## A WEB DESIGNER NEEDED
+I suck at web design so I really need help with that.
+
 ## Latex Parser
 That's the part of the project that parses the latex source code to get a result out of it. </br>
 I'm using the [PEG.js](http://pegjs.org/) parser generator, go ahead and develop the grammar with me [here](http://peg.arcanis.fr/1eni3A/).
