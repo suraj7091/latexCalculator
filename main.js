@@ -34,7 +34,7 @@ $(function() {
 				}
 				catch(error) { 
 						console.log(error);
-						result.mathquill().appendTo('body').mathquill('latex', '');
+						result.mathquill().mathquill('latex', '');
 				}
 			}
 		});
