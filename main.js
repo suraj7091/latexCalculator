@@ -10,7 +10,7 @@ $(function() {
 			latexSource.val(latex);
 			try { 
 				parsedLatex = latexParser.parse(latex).toString();
-				result.mathquill().mathquill('latex',parsedLatex);
+				result.mathquill('latex',parsedLatex);
 			}
 			catch(error) { 
 				console.log(error);
@@ -34,7 +34,7 @@ $(function() {
 				}
 				catch(error) { 
 						console.log(error);
-						result.mathquill().mathquill('latex', '');
+						result.mathquill('latex', '');
 				}
 			}
 		});
