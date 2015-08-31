@@ -1,73 +1,68 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html>
-<head>
-<title>Latex Calculator</title>
-<meta name="viewport" content="width=624">
+	<head>
+		<title>Latex Calculator</title>
+		<meta name="viewport" content="width=624">
 
-<link rel="stylesheet" type="text/css" href="home.css">
-<link rel="stylesheet" type="text/css" href="mathquill/mathquill.css">
+		<link rel="stylesheet" type="text/css" href="home.css">
+		<link rel="stylesheet" type="text/css" href="mathquill/mathquill.css">
 
-<style type="text/css">
-code span {
-	font: 90% Verdana, sans-serif;
-}
-.mathquill-textbox {
-	width: 100%;
-}
-#html-source {
-	display: none;
-	font-size: 90%;
-	white-space: pre-wrap;
-}
-</style>
+		<style type="text/css">
+			code span {
+				font: 90% Verdana, sans-serif;
+			}
+			.mathquill-textbox {
+				width: 100%;
+			}
+			#html-source {
+				display: none;
+				font-size: 90%;
+				white-space: pre-wrap;
+			}
+		</style>
 
-</head>
-<body>
-<div id="body">
+	</head>
+	<body>
+		<div id="body">
 
-<p>
-Type in your math here: <span id="editable-math" class="mathquill-editable">2\cdot\frac{2^3}{3+2}</span>
- Result = <span id="result" class="mathquill-embedded-latex"></span>
-</p>
+			<p>
+			Type in your math here: <span id="editable-math" class="mathquill-editable">2\cdot\frac{2^3}{3+2}</span>
+			 Result = <span id="result" class="mathquill-embedded-latex"></span>
+			</p>
 
-<p>
-Try to type something above </br>
-Functions that are currently working:
-</p>
+			<p>
+			Try to type something above </br>
+			Functions that are currently working:
+			</p>
 
-<p>
-<ul>
-	<li>Addition: 2+3</li>
-	<li>subtraction: 2-3</li>
-	<li>multiplication: 2*3</li>
-	<li>division: 2/3</li>
-	<li>power: 2^3</li>
-</ul>
-Note: This calculator in its current state doesn't know how to prioritize calculations (yet). </br>
-It might for example do an addition before a multiplication.
-</p>
+			<p>
+			<ul>
+				<li>Addition: 2+3</li>
+				<li>subtraction: 2-3</li>
+				<li>multiplication: 2*3</li>
+				<li>division: 2/3</li>
+				<li>power: 2^3</li>
+			</ul>
+			Note: This calculator in its current state doesn't know how to prioritize calculations (yet). </br>
+			It might for example do an addition before a multiplication.
+			</p>
 
 
-<p>Latex source: <br><textarea id="latex-source" style="width:80%;vertical-align:top"></textarea></p>
+			<p>Latex source: <br><textarea id="latex-source" style="width:80%;vertical-align:top"></textarea></p>
 
-<p>
-<big><font color="red">Warning!</font></big>
-Don't try to select the result. Your browser will crash. This is a known bug and I'm working on a solution.
-</p>
+			<p>If you find this project interesting, fork me on 
+			<big><a href="https://github.com/lordadamson/latexCalculator">github!</a></big></br>
+			I could use a web designer because I suck at it (as you can obviously tell).
+			</p>
 
-<p>If you find this project interesting, fork me on 
-<big><a href="https://github.com/lordadamson/latexCalculator">github!</a></big></br>
-I could use a web designer because I suck at it (as you can obviously tell).
-</p>
+		</div>
 
-</div>
+		<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="mathquill/mathquill.js"></script>
+		<script type="text/javascript" src="latexParser.js"></script>
+		<script type="text/javascript" src="main.js"></script>
 
-<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="mathquill/mathquill.js"></script>
-<script type="text/javascript" src="latexParser.js"></script>
-<script type="text/javascript" src="main.js"></script>
-
-</body>
+	</body>
 </html>
 
