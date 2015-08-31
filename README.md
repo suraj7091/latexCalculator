@@ -3,7 +3,7 @@ This is a calculator that formats mathmatical expressions in the way you would n
 So instead of having to type lame stuff like: </br>
 `((2+33)/114)*sqrt(25)` </br>
 You would **elegantly** type: </br>
-![Alt text](/latexMath.png?raw=true "Latex Math")
+![Alt text](/latex.png?raw=true "Latex Math")
 </br>
 
 ## A WEB DESIGNER NEEDED
