@@ -1,6 +1,6 @@
 /*
- * MathQuill: http://mathquill.com
- * by Jay and Han (laughinghan@gmail.com)
+ * MathQuill v0.10.1               http://mathquill.com
+ * by Han, Jeanine, and Mary  maintainers@mathquill.com
  *
  * This Source Code Form is subject to the terms of the
  * Mozilla Public License, v. 2.0. If a copy of the MPL
@@ -10,26 +10,11 @@
 @font-face {
   font-family: Symbola;
   src: url(font/Symbola-basic.eot);
-  src: local("Symbola Regular"), local("Symbola"), url(font/Symbola-basic.ttf) format("truetype");
+  src: local("Symbola Regular"), local("Symbola"), url(font/Symbola-basic.woff2) format("woff2"), url(font/Symbola-basic.woff) format("woff"), url(font/Symbola-basic.ttf) format("truetype");
 }
 .mq-editable-field {
   display: -moz-inline-box;
   display: inline-block;
-}
-.mq-editable-field .mq-root-block {
-  display: -moz-inline-box;
-  display: inline-block;
-  width: 100%;
-  padding: 2px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  white-space: pre;
-  overflow: hidden;
-  vertical-align: middle;
-}
-.mq-editable-field .mq-root-block:after {
-  content: '';
 }
 .mq-editable-field .mq-cursor {
   border-left: 1px solid black;
@@ -90,6 +75,19 @@
   overflow-x: auto;
   overflow-y: hidden;
 }
+.mq-root-block,
+.mq-math-mode .mq-root-block {
+  display: -moz-inline-box;
+  display: inline-block;
+  width: 100%;
+  padding: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+}
 .mq-math-mode {
   font-variant: normal;
   font-weight: normal;
@@ -119,6 +117,7 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
+  box-sizing: border-box;
 }
 .mq-math-mode .mq-empty {
   background: #ccc;
@@ -148,12 +147,12 @@
 .mq-math-mode i.mq-font {
   font-style: italic;
 }
-.mq-math-mode var.mq-florin {
-  display: -moz-inline-box;
-  display: inline-block;
-  width: .3em;
-  position: relative;
-  left: -0.1em;
+.mq-math-mode var.mq-f {
+  margin-right: 0.2em;
+  margin-left: 0.1em;
+}
+.mq-math-mode .mq-roman var.mq-f {
+  margin: 0;
 }
 .mq-math-mode big {
   font-size: 125%;
@@ -280,14 +279,12 @@
   border-top: 1px solid;
   float: right;
   width: 100%;
-  padding: .15em .1em 0 .1em;
-  margin-right: -0.1em;
-  margin-left: -0.1em;
+  padding: 0.1em;
 }
 .mq-math-mode .mq-sqrt-prefix {
   padding-top: 0;
   position: relative;
-  top: .05em;
+  top: 0.1em;
   vertical-align: top;
   -webkit-transform-origin: top;
   -moz-transform-origin: top;
@@ -334,6 +331,28 @@
 .mq-math-mode .mq-editable-field {
   cursor: text;
   font-family: Symbola, "Times New Roman", serif;
+}
+.mq-math-mode .mq-overarrow {
+  border-top: 1px solid black;
+  margin-top: 1px;
+  padding-top: 0.2em;
+}
+.mq-math-mode .mq-overarrow:before {
+  display: block;
+  position: relative;
+  top: -0.34em;
+  font-size: 0.5em;
+  line-height: 0em;
+  content: '\27A4';
+  text-align: right;
+}
+.mq-math-mode .mq-overarrow.mq-arrow-left:before {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
 }
 .mq-math-mode .mq-selection,
 .mq-editable-field .mq-selection,
@@ -386,6 +405,11 @@
   user-select: text;
   position: absolute;
   clip: rect(1em 1em 1em 1em);
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
   resize: none;
   width: 1px;
   height: 1px;

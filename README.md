@@ -14,7 +14,6 @@ That's the part of the project that parses the latex source code to get a result
 I'm using the [PEG.js](http://pegjs.org/) parser generator, go ahead and develop the grammar with me [here](http://peg.arcanis.fr/1eni3A/).
 
 This project is based on the beautiful [MathQuill](https://github.com/mathquill/mathquill) library. </br>
-The latex parser is based on that cool [GIST](https://gist.github.com/karoltarasiuk/9c73df20ca44686fb32d). </br>
 ![Alt text](/structure.png?raw=true "Structure")
 </br>
 
