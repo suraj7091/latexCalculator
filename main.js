@@ -19,3 +19,8 @@ var editableMathField = MQ.MathField(editableMath, {
       }
     }
   });
+
+function onOneClicked(value)
+{
+	editableMathField.typedText(value);
+}
