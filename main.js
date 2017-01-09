@@ -20,7 +20,19 @@ var editableMathField = MQ.MathField(editableMath, {
     }
   });
 
-function onOneClicked(value)
+editableMathField.focus();
+
+function onButtonClicked(value)
 {
 	editableMathField.typedText(value);
+	editableMathField.focus();
 }
+
+function onSpecialButtonClicked(value)
+{
+	editableMathField.keystroke(value);
+	editableMathField.focus();
+}
+
+// even if user clicks away the mathfield will still be focused
+$(document).click(function(e) { editableMathField.focus(); });
