@@ -1,20 +1,23 @@
-start
-    = any
- 
-additive
-    = left:primary "+" right:any { return left + right; }
- 
-multiplicative
-    = left:primary "\\cdot" right:any { return left * right; }
- 
-subtractive
-    = left:primary "-" right:any { return left - right; }
- 
-power
-    = left:primary "^" right:any { return Math.pow(left, right); }
- 
+start =
+    additive
+
+additive =
+    left:subtractive "+" right:additive
+        { return left+right; }
+  / subtractive
+
+subtractive =
+    left:multiplicative "-" right:subtractive
+        { return left-right; }
+  / multiplicative
+
+multiplicative =
+    left:frac "\\cdot" right:multiplicative
+        { return left*right; }
+  / frac
+
 frac
-    = "\\frac{" nominator:any "}{" denominator:any "}"
+    = "\\frac{" nominator:additive "}{" denominator:additive "}"
     {
         if (denominator === 0) {
             if (nominator < 0) {
@@ -26,31 +29,27 @@ frac
             return nominator / denominator;
         }
     }
- 
-abs
-    = "\\abs{" argument:any "}"
-    {
-        return Math.abs(argument);
-    }
+  / power
 
-any
-    = multiplicative
-    / power
-    / additive
-    / subtractive
-    / primary
 
-primary
-    = frac
-    / abs
-    / float
-    / integer
-    / "\\left(" any:any "\\right)" { return any; }
-    / "" { return 0; }
- 
+power
+    = left:primary "^" right:power { return Math.pow(left, right); }
+  / left:primary "^" "{" right:additive "}" { return Math.pow(left, right); }
+  / primary
+
+
+primary =
+    float
+  / "(" additive:additive ")"
+      { return additive; }
+
 float "float"
     = left:[0-9]+ "." right:[0-9]+ { return parseFloat(left.join("") + "." + right.join("")); }
- 
-integer "integer"
-    = digits:[0-9]+ { return parseInt(digits.join(""), 10); }
+  / "-" left:[0-9]+ "." right:[0-9]+ { return parseFloat("-" + left.join("") + "." + right.join("")); }
+  / integer
 
+integer =
+    digits:[0-9]+
+        { return parseInt(digits.join(""), 10); }
+  / "-" digits:[0-9]+
+        { return parseInt("-" + digits.join(""), 10); }
