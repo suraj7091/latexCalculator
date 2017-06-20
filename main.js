@@ -34,4 +34,4 @@ function onSpecialButtonClicked(value)
 }
 
 // even if user clicks away the mathfield will still be focused
-$(document).click(function(e) { editableMathField.focus(); });
+//$(document).click(function(e) { editableMathField.focus(); });
