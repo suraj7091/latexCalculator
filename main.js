@@ -20,7 +20,7 @@ var editableMathField = MQ.MathField(editableMath, {
     }
   });
 
-//editableMathField.focus();
+
 
 function onButtonClicked(value)
 {
