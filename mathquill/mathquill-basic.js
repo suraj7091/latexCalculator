@@ -611,7 +611,7 @@ var Cursor = P(Point, function(_) {
       }
       else
         this.jQ.appendTo(this.parent.jQ);
-      this.parent.focus();
+    //  this.parent.focus();
     }
     this.intervalId = setInterval(this.blink, 500);
     return this;
@@ -648,7 +648,7 @@ var Cursor = P(Point, function(_) {
     prayDirection(dir);
     this.jQ.insAtDirEnd(dir, el.jQ);
     this.withDirInsertAt(dir, el, 0, el.ends[dir]);
-    el.focus();
+    //el.focus();
     return this;
   };
   _.insAtLeftEnd = function(el) { return this.insAtDirEnd(L, el); };
@@ -1051,7 +1051,7 @@ function getInterface(v) {
       this.__controller.editablesTextareaEvents();
       return this;
     };
-    _.focus = function() { this.__controller.textarea.focus(); return this; };
+    //_.focus = function() { this.__controller.textarea.focus(); return this; };
     _.blur = function() { this.__controller.textarea.blur(); return this; };
     _.write = function(latex) {
       this.__controller.writeLatex(latex);
@@ -1577,7 +1577,7 @@ var saneKeyboardEvents = (function() {
       // on keydown too, FWIW).
       //
       // And by nifty, we mean dumb (but useful sometimes).
-      textarea.focus();
+      //textarea.focus();
 
       checkTextareaFor(pastedText);
     }
