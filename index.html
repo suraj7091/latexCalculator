@@ -26,16 +26,20 @@
 
 	</head>
 	<body>
-		<div id="body">
 
-			<div id = "calcBody" >
-				<p id="hed"><b>LaTeX</b>Calculator</p>
+		<div id="body" >
+
+			<div id = "calcBody" style="border: 2px solid grey; height: 650px;width:450px; border-radius:2%;" >
+
+				<p id="hed" style="color:#F6F5FF;"><b>LaTeX</b>Calculator</p>
 				<div id="bb">
-				<div  data-balloon-length="small" data-balloon="Type in your math here" data-balloon-pos="up" id="editable-math">2\cdot\frac{2^3}{3+2}</div>
-				<p>Result = <span id="result"></span></p>
+				<div   id="editable-math" style="height:150px;border-radius:2px;" >2\cdot\frac{2^3}{3+2}
+                  
+				</div>
+				<p style="font-size: 20px">Result = <span id="result"></span></p>
 			</div>
 
-				<div id="numb">
+				<div id="numb" style="margin-top: 50px;">
 					<a id="right" onclick="onSpecialButtonClicked('Right')" class="btn">→</a>
 					<a id="left" onclick="onSpecialButtonClicked('Left')" class="btn">←</a>
 					<a id="up" onclick="onSpecialButtonClicked('Up')" class="btn">↑</a>
@@ -67,7 +71,7 @@
 			</div>
 		<div id="footer">
 			<p>If you find this project interesting, fork me on
-			<big><a href="https://github.com/lordadamson/latexCalculator">Github</a></big></br>
+			<big><a href="https://github.com/lordadamson/latexCalculator" style="color: #AA24DB;font-size: 25px;">Github</a></big></br>
 			I could use a web designer because I suck at it (as you can obviously tell).
 			</p>
 		</div>
